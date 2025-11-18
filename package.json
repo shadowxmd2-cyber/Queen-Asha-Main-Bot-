@@ -9,7 +9,7 @@
     "restart": "pm2 restart robin"
   },
   "dependencies": {
-    "baileys": "npm:angularsockets",
+    "angularsockets": "^1.4.5",
     "qrcode": "latest",
     "awesome-phonenumber": "latest",
     "pino": "latest",
