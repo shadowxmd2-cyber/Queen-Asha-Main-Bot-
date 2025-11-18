@@ -9,7 +9,7 @@
     "restart": "pm2 restart robin"
   },
   "dependencies": {
-    "angularsockets": "^1.4.5",
+    "github:tenka-san/WaBails": "latest",
     "qrcode": "latest",
     "jimp":"latest",
     "awesome-phonenumber": "latest",
