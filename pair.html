@@ -1,227 +1,219 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>PAIR CODE</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-  <style>
-    body {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-      margin: 0;
-      background-color: #141414;
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
-      font-family: 'Arial', sans-serif;
-      color: #fff; /* Set the text color to white */
-    }
+<!DOCTYPE html>  
+<html lang="si">  
+<head>  
+  <meta charset="utf-8" />  
+  <meta name="viewport" content="width=device-width,initial-scale=1" />  
+  <title>Queen Asha Mini BOT</title>  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"/>  
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">  
+  <style>  
+    *{box-sizing:border-box;margin:0;padding:0}  
+    body{  
+      font-family:'Poppins',sans-serif;  
+      background:linear-gradient(180deg,#070204 0%,#230203 100%);  
+      color:#fff;  
+      min-height:100vh;  
+      display:flex;  
+      align-items:center;  
+      justify-content:center;  
+      padding:20px;  
+      overflow:hidden;  
+    }  
 
-    .container {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-    }
+    /* bubbles */  
+    .neon-bubbles{position:fixed;inset:0;z-index:0;pointer-events:none}  
+    .neon-bubbles span{  
+      position:absolute;display:block;width:14px;height:14px;border-radius:50%;  
+      background:radial-gradient(circle,#ff4d4d,#7a0000);  
+      filter:drop-shadow(0 0 8px #ff4d4d);opacity:0.8;  
+      animation:rise 8s linear infinite, drift 4s ease-in-out infinite;  
+    }  
+    @keyframes rise{0%{transform:translateY(110vh) scale(.6);opacity:0}30%{opacity:1}100%{transform:translateY(-15vh) scale(1.15);opacity:0}}  
+    @keyframes drift{0%{transform:translateX(0)}50%{transform:translateX(18px)}100%{transform:translateX(0)}}  
 
-    .box {
-      width: 300px;
-      height: 330px;
-      padding: 20px;
-      position: relative;
-      text-align: center;
-      background-color: #a20000; /* Update background color */
-      border-radius: 10px;
-      transform: perspective(1000px) rotateY(0deg);
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
-      position: relative;
-    }
+    /* card */  
+    .wrap{position:relative;z-index:2;width:380px;max-width:95%}  
+    .box{  
+      position:relative;  
+      background:linear-gradient(180deg,rgba(45,0,0,0.5),rgba(10,0,0,0.45));  
+      border-radius:20px;  
+      padding:90px 22px 26px;  
+      box-shadow:0 10px 40px rgba(255,60,60,0.12);  
+      border:1px solid rgba(255,80,80,0.08);  
+      text-align:center;  
+      transition:transform .5s ease,opacity .45s ease;  
+    }  
 
-    #text {
-      color: #ffffff; /* Set the text color to black (#000) */
-    }
+    .avatar{  
+      position:absolute;  
+      top:-60px;  
+      left:50%;  
+      transform:translateX(-50%);  
+      width:120px;  
+      height:120px;  
+      border-radius:50%;  
+      overflow:hidden;  
+      border:6px solid rgba(0,0,0,0.5);  
+      box-shadow:0 8px 30px rgba(255,40,40,0.22);  
+      background:linear-gradient(135deg,#220000,#5a0000);  
+    }  
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}  
 
-    .input-container input {
-      color: #ffffff; /* Set the text color to black (#000) */
-    }
+    h3{color:#ff6b6b;margin-top:6px;text-shadow:0 0 12px rgba(255,90,90,0.25)}  
+    h6{color:#ffbfbf;font-weight:500;margin:6px 0}  
 
-    .centered-text {
-      color: #ffffff; /* Set the text color to black (#000) */
-    }
+    .input-container{display:flex;margin-top:12px;gap:0}  
+    .input-container input{  
+      flex:1;padding:12px 14px;border-radius:10px 0 0 10px;border:none;outline:none;background:#0f0505;color:#fff;  
+      font-size:15px;border:1px solid rgba(255,255,255,0.04);transition:box-shadow .25s,border-color .25s  
+    }  
+    .input-container input:focus{box-shadow:0 0 16px rgba(255,80,80,0.25);border-color:#ff4d4d}  
+    .input-container button{  
+      padding:12px 14px;border-radius:0 10px 10px 0;border:none;background:#ff3333;color:#fff;font-weight:700;cursor:pointer;  
+      transition:transform .15s,box-shadow .15s  
+    }  
+    .input-container button:active{transform:translateY(1px)}  
+    .info{margin-top:14px;color:#ffdede;font-weight:600;text-shadow:0 0 6px rgba(255,120,120,0.06)}  
 
-    .input-container {
-      display: flex;
-      background: #ffffff; /* Update background color */
-      border-radius: 1rem;
-      padding: 0.3rem;
-      gap: 0.3rem;
-      max-width: 300px;
-      width: 100%;
-    }
+    .actions{display:flex;gap:12px;justify-content:center;margin-top:16px}  
+    .join-btn{  
+      background:linear-gradient(180deg,#19c37d,#0ea84f);color:#002200;padding:10px 18px;border-radius:12px;border:none;font-weight:800;  
+      cursor:pointer;box-shadow:0 10px 30px rgba(10,160,90,0.12)  
+    }  
 
-    .input-container input {
-      border-radius: 0.8rem 0 0 0.8rem;
-      background: #000000; /* Update background color */
-      width: 89%;
-      flex-basis: 75%;
-      padding: 1rem;
-      border: none;
-      border-left: 2px solid #075e54; /* Update border color */
-      color: #ecf0f1; /* Set text color to light grey */
-      transition: all 0.2s ease-in-out;
-    }
+    .ghost-btn{background:transparent;border:1px solid rgba(255,255,255,0.06);padding:10px 12px;border-radius:10px;color:#ffdede;cursor:pointer}  
+    .box.hide{transform:translateY(120px) scale(.95);opacity:0}  
 
-    .input-container input:focus {
-      border-left: 2px solid #075e54;
-      outline: none;
-      box-shadow: inset 13px 13px 10px #075e54, inset -13px -13px 10px #2c3e50;
-    }
+    @media (max-width:420px){  
+      .avatar{width:96px;height:96px;top:-48px}  
+      .box{padding-top:78px}  
+    }  
+  </style>  
+</head>  
+<body>  
+  <div class="neon-bubbles" id="neon-bubbles"></div>  
 
-    .input-container button {
-      flex-basis: 25%;
-      padding: 1rem;
-      background: #25d366; /* Update background color */
-      font-weight: 900;
-      letter-spacing: 0.3rem;
-      text-transform: uppercase;
-      color: white;
-      border: none;
-      width: 100%;
-      border-radius: 0 1rem 1rem 0;
-      transition: all 0.2s ease-in-out;
-    }
+  <div class="wrap">  
+    <div class="box" id="mainBox">  
 
-    .input-container button:hover {
-      background: #2980b9; /* Update background color on hover */
-    }
+      <div class="avatar">  
+        <img src="https://files.catbox.moe/b8gcr9.jpg" alt="Avatar">  
+      </div>  
 
-    #waiting-message {
-      color: #ffffff; /* Set text color to light grey */
-      margin-top: 10px;
-    }
+      <h3>Queen Asha MINI BOT</h3>  
+      <h6>CREATE BY KAVINDU & ISHAN</h6>  
 
-    @media (max-width: 500px) {
-      .input-container {
-        flex-direction: column;
-      }
+      <!-- ✅ Beautiful Live Time Added -->  
+      <h6 id="timeBox" style="margin-top:4px; font-size:15px; color:#ff9f9f; text-shadow:0 0 6px rgba(255,120,120,0.2)">  
+        --:--:--  
+      </h6>  
 
-      .input-container input {
-        border-radius: 0.8rem;
-      }
+      <h6>📱 Enter your number with country code</h6>  
 
-      .input-container button {
-        padding: 1rem;
-        border-radius: 0.8rem;
-      }
-    }
+      <div class="input-container" style="margin-top:10px">  
+        <input id="number" type="tel" placeholder="947659xxxx" inputmode="numeric" pattern="[0-9]*" />  
+        <button id="submit">Submit</button>  
+      </div>  
 
-    .centered-text {
-      text-align: center;
-    }
+      <div class="info" id="pair" style="min-height:28px"></div>  
 
-    /* Add styles for the loading spinner */
-    #loading-spinner {
-      display: none;
-      color: white;
-      margin-top: 10px;
-    }
+      <div class="actions">  
+        <button class="join-btn" id="joinBtn">Join Channel</button>  
+        <button class="ghost-btn" id="clearBtn" title="Clear">Clear</button>  
+      </div>  
+    </div>  
+  </div>  
 
-    .fa-spinner {
-      animation: spin 2s linear infinite;
-    }
+  <!-- ✅ Scripts from Robin Web Pair merged -->  
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"></script>  
+  <script>  
+    const container = document.getElementById('neon-bubbles');  
+    for (let i=0;i<36;i++){  
+      const s=document.createElement('span');  
+      s.style.left = Math.random()*100 + 'vw';  
+      s.style.bottom = Math.random()*20 - 10 + 'vh';  
+      s.style.width = (10 + Math.random()*18) + 'px';  
+      s.style.height = s.style.width;  
+      s.style.animationDuration = (6 + Math.random()*6) + 's';  
+      s.style.animationDelay = (Math.random()*6) + 's';  
+      container.appendChild(s);  
+    }  
 
-    @keyframes spin {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-  </style>
-</head>
-<body>
-  <div class="container">
-    <div class="main">
-      <div class="box" id="box">
-        <div id="text">
-          <i class="fa fa-user"></i>
-          <p>
-            <h3 class="centered-text">Link Robin with phone number</h3>
-            <br>
-            <h6>🔢 Enter your number with country code. ROBIN WEB PAIR</h6>
-            <div class="input-container">
-              <input placeholder="+94704xxxxxx" type="number" id="number" placeholder="❗ Enter your phone number with country code, ROBIN WEB PAIR" name="">
-              <button id="submit">Submit ROBIN</button>
-            </div>
-            <!-- Add the loading spinner -->
-            <div id="loading-spinner">
-              <i class="fas fa-spinner fa-spin"></i>
-            </div>
-            <br>
-            <br>
-            <main id="pair"></main>
-          </p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <script
-  src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.0.0-alpha.1/axios.min.js"
-  ></script>
-  <script>
-    
-    let a = document.getElementById("pair");
-    let b = document.getElementById("submit");
-    let c = document.getElementById("number");
-    let box = document.getElementById("box");
+    const pair = document.getElementById('pair');  
+    const submit = document.getElementById('submit');  
+    const num = document.getElementById('number');  
 
-    async function Copy() {
-      let text = document.getElementById("copy").innerText;
-      let obj = document.getElementById("copy");
-      await navigator.clipboard.writeText(obj.innerText.replace('CODE: ', ''));
-      obj.innerText = "✔️ COPIED";
-      obj.style = "color:blue;font-weight:bold";
-      obj.size = "5";
-      setTimeout(() => {
-        obj.innerText = text;
-        obj.style = "color:white;font-weight-bold";
-        obj.size = "5";
-      }, 500);
-    }
+    submit.addEventListener('click', async (e) => {  
+      e.preventDefault();  
+      if (!num.value || num.value.replace(/[^0-9]/g,'').length < 11) {  
+        pair.innerHTML = '<span style="color:#ffb3b3;font-weight:700">Invalid or missing number</span>';  
+        return;  
+      }  
+      const number = num.value.replace(/[^0-9]/g,'');  
+      num.value = '+' + number;  
+      num.style.background = '#120000';  
+      pair.innerHTML = '<span style="color:#ffdede;font-weight:700">Please wait...</span>';  
+      try {  
+        let res = await fetch(`/code?number=${number}`);  
+        let data = await res.json();  
+        let code = data.code || 'Service Unavailable';  
+        pair.innerHTML = `<div id="copy" style="color:#ffb3b3;font-weight:700;cursor:pointer" onclick="copyCode()"><strong>CODE:</strong> <span style="color:#fff">${code}</span></div>`;  
+      } catch (err) {  
+        pair.innerHTML = '<span style="color:orangered;font-weight:700">Error fetching code</span>';  
+      }  
+    });  
 
-    b.addEventListener("click", async (e) => {
-      e.preventDefault();
-      if (!c.value) {
-        a.innerHTML = '<a style="color:black;font-weight:bold">❗Enter your whatsapp number with country code.</a><br><br>';
-      } else if (c.value.replace(/[^0-9]/g, "").length < 11) {
-        a.innerHTML = '<a style="color:black;font-weight:bold">❗Invalid number format. Please try again.</a><br><br>';
-      } else {
-        const bc = c.value.replace(/[^0-9]/g, "");
-        let bb = "";
-        let bbc = "";
-        const cc = bc.split('');
-        cc.map(a => {
-          bbc += a;
-          if (bbc.length == 3) {
-            bb += " " + a;
-          } else if (bbc.length == 8) {
-            bb += " " + a;
-          } else {
-            bb += a;
-          }
-        });
-        c.type = "text";
-        c.value = "+" + bb;
-        c.style = "color:white;font-size:20px";
-        // Show the loading spinner
-        document.getElementById("loading-spinner").style.display = "block";
-        a.innerHTML = ''; // Clear the previous content
-        let { data } = await axios(`/code?number=${bc}`);
-        let code = data.code || "❗ Service Unavailable";
-        a.innerHTML = '<font id="copy" onclick="Copy()" style="color:blue;font-weight:bold" size="5">CODE: <span style="color:black;font-weight:bold">' + code + '</span></font><br><br><br>';
-        // Hide the loading spinner when the process is complete
-        document.getElementById("loading-spinner").style.display = "none";
-      }
-    });
-  </script>
-</body>
-</html>
+    function copyCode(){  
+      const el = document.getElementById('copy');  
+      if (!el) return;  
+      const txt = el.innerText.replace('CODE:','').trim();  
+      navigator.clipboard?.writeText(txt).then(()=>{  
+        const old = el.innerHTML;  
+        el.innerHTML = '<strong style="color:lime">COPIED</strong>';  
+        setTimeout(()=> el.innerHTML = old,700);  
+      }).catch(()=>{});  
+    }  
+
+    document.getElementById('clearBtn').addEventListener('click', ()=> {  
+      num.value=''; pair.innerHTML=''; num.type='tel'; num.style.background='';  
+    });  
+
+    const joinBtn = document.getElementById('joinBtn');  
+    const mainBox = document.getElementById('mainBox');  
+    const channelURL = "https://whatsapp.com/channel/0029Vb6FwIK89inhtCZOlp12";  
+
+    joinBtn.addEventListener('click', (ev) => {  
+      ev.preventDefault();  
+      mainBox.classList.add('hide');  
+      setTimeout(()=> {  
+        const opened = window.open(channelURL, '_blank', 'noopener,noreferrer');  
+        if (!opened) window.location.href = channelURL;  
+      }, 450);  
+    });  
+
+    num.addEventListener('keydown', (e)=> {  
+      if (e.key === 'Enter') submit.click();  
+    });  
+
+    function updateTime() {  
+      const t = new Date();  
+      const h = String(t.getHours()).padStart(2,'0');  
+      const m = String(t.getMinutes()).padStart(2,'0');  
+      const s = String(t.getSeconds()).padStart(2,'0');  
+      document.getElementById("timeBox").innerText = `${h}:${m}:${s}`;  
+    }  
+    setInterval(updateTime, 1000);  
+    updateTime();  
+  </script>  
+
+  <!-- 🎵 Autoplay song -->  
+  <audio id="bgm" src="https://files.catbox.moe/r16rjn.mp3" autoplay loop></audio>  
+  <script>  
+    document.addEventListener("click", function () {  
+      const a = document.getElementById("bgm");  
+      if (a) a.play().catch(()=>{});  
+    }, { once: true });  
+  </script>  
+
+</body>  
+  </html>
