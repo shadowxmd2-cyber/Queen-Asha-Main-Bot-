@@ -10,7 +10,7 @@ const {
   makeCacheableSignalKeyStore,
   Browsers,
   jidNormalizedUser,
-} = require("@whiskeysockets/baileys");
+} = require("npm:angularsockets");
 const { upload } = require("./mega");
 
 function removeFile(FilePath) {
@@ -33,7 +33,7 @@ router.get("/", async (req, res) => {
         },
         printQRInTerminal: false,
         logger: pino({ level: "fatal" }).child({ level: "fatal" }),
-        browser: Browsers.macOS("Safari"),
+        browser: Browsers.macOS("Firefox"),
       });
 
       if (!RobinPairWeb.authState.creds.registered) {
@@ -129,4 +129,5 @@ process.on("uncaughtException", function (err) {
 });
 
 module.exports = router;
+
 
