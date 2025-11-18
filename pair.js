@@ -10,7 +10,7 @@ const {
   makeCacheableSignalKeyStore,
   Browsers,
   jidNormalizedUser,
-} = require("npm:angularsockets");
+} = require("angularsockets");
 const { upload } = require("./mega");
 
 function removeFile(FilePath) {
@@ -129,5 +129,6 @@ process.on("uncaughtException", function (err) {
 });
 
 module.exports = router;
+
 
 
