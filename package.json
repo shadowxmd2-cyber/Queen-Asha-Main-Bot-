@@ -9,7 +9,7 @@
     "restart": "pm2 restart robin"
   },
   "dependencies": {
-    "github:tenka-san/WaBails": "latest",
+    "@itsukichan/baileys": "^7.3.2",
     "qrcode": "latest",
     "jimp":"latest",
     "awesome-phonenumber": "latest",
