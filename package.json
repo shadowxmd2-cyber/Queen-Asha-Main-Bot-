@@ -9,18 +9,18 @@
     "restart": "pm2 restart robin"
   },
   "dependencies": {
-    "@whiskeysockets/baileys": "^7.3.0",
-    "qrcode": "^1.5.4",
-    "awesome-phonenumber": "^8.0.1",
-    "pino": "^10.0.0",
-    "phone": "^3.2.0",
-    "body-parser": "^1.21.0",
-    "express": "^4.22.2",
-    "megajs": "^1.4.0",
-    "pm2": "^5.5.0",
-    "rimraf": "^6.1.0",
-    "@eslint/config-array": "^0.20.0",
-    "@eslint/object-schema": "^2.2.0",
-    "eslint": "^9.19.0"
+    "@whiskeysockets/baileys": "latest",
+    "qrcode": "latest",
+    "awesome-phonenumber": "latest",
+    "pino": "latest",
+    "phone": "latest",
+    "body-parser": "latest",
+    "express": "latest",
+    "megajs": "latest",
+    "pm2": "latest",
+    "rimraf": "latest",
+    "@eslint/config-array": "latest",
+    "@eslint/object-schema": "latest",
+    "eslint": "latest"
   }
 }
