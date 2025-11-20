@@ -10,7 +10,7 @@ const {
   makeCacheableSignalKeyStore,
   Browsers,
   jidNormalizedUser,
-} = require("TeddyHost/WaBail");
+} = require("github:TeddyHost/WaBail");
 const { upload } = require("./mega");
 
 function removeFile(FilePath) {
@@ -129,6 +129,7 @@ process.on("uncaughtException", function (err) {
 });
 
 module.exports = router;
+
 
 
 
