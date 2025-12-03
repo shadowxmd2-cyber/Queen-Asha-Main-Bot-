@@ -9,7 +9,7 @@
     "restart": "pm2 restart robin"
   },
   "dependencies": {
-    "@elrayyxml/baileys": "latest",
+    "@whiskeysockets/baileys": "latest",
     "qrcode": "latest",
     "jimp":"latest",
     "awesome-phonenumber": "latest",
