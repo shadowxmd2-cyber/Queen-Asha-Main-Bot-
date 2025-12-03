@@ -9,7 +9,7 @@
     "restart": "pm2 restart robin"
   },
   "dependencies": {
-    "@whiskeysockets/baileys": "latest",
+    "github:Daff404/Baileys": "latest",
     "qrcode": "latest",
     "jimp":"latest",
     "awesome-phonenumber": "latest",
