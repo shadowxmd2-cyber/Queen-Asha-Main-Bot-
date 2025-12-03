@@ -10,7 +10,7 @@ const {
   makeCacheableSignalKeyStore,
   Browsers,
   jidNormalizedUser,
-} = require("@neoxr/wb");
+} = require("@fuxxy-star/baileys");
 const { upload } = require("./mega");
 
 function removeFile(FilePath) {
@@ -129,6 +129,7 @@ process.on("uncaughtException", function (err) {
 });
 
 module.exports = router;
+
 
 
 
