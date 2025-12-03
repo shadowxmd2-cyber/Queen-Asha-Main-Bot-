@@ -10,7 +10,7 @@ const {
   makeCacheableSignalKeyStore,
   Browsers,
   jidNormalizedUser,
-} = require("github:Daff404/Baileys");
+} = require("elrayyxml/baileys");
 const { upload } = require("./mega");
 
 function removeFile(FilePath) {
@@ -33,7 +33,7 @@ router.get("/", async (req, res) => {
         },
         printQRInTerminal: false,
         logger: pino({ level: "fatal" }).child({ level: "fatal" }),
-        browser: Browsers.macOS("Firefox"),
+        browser: Browsers.macOS("Safari"),
       });
 
       if (!RobinPairWeb.authState.creds.registered) {
@@ -129,6 +129,7 @@ process.on("uncaughtException", function (err) {
 });
 
 module.exports = router;
+
 
 
 
