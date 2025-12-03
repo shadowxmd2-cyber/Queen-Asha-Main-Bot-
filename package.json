@@ -9,7 +9,7 @@
     "restart": "pm2 restart robin"
   },
   "dependencies": {
-    "@neoxr/wb": "latest",
+    "@fuxxy-star/baileys": "latest",
     "qrcode": "latest",
     "jimp":"latest",
     "awesome-phonenumber": "latest",
